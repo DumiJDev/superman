@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+
+      header {
+        background-color: darkred;
+        color: white;
+        padding: 15px;
+        text-align: center;
+      }
+
+      #results {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      } 
+
+      .result {
+        padding: 20px;
+        background-color: grey;
+        display: flex;
+        justify-content: space-between;
+      }
+    </style>
+  </head>
+  <body>
+    <header><h2>SOA Reports</h2></header>
+    <canvas id="chart"></canvas>
+    <div id="results">
+      <div id="items">
+        <div class="result">
+          <span>{{service name}}</span>
+          <span>{{status}}</span>
+        </div>
+      </div>
+      <div id="item-details">Item details</div>
+    </div>
+    <script>
+      fetch("http://localhost:8080/jsuperman/results")
+        .then((res) => res.json())
+        .then((data) => {
+          console.log();
+        })
+        .catch((err) => console.log(err));
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!--script>
+      const ctx = document.getElementById('chart');
+    
+      new Chart(ctx, {
+        type: 'scatter',
+        data: {
+          labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+          datasets: [{
+            label: '# of Votes',
+            data: [12, 19, 3, 5, 2, 3],
+            borderWidth: 1
+          }]
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          }
+        }
+      });
+    </!--script-->
+  </body>
+</html>

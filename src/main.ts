@@ -43,7 +43,7 @@ class JSupermanApp {
         app.use(express.json());
         app.use(express.urlencoded({ limit: "10mb", extended: true }));
 
-        app.get("/jsuperman/results", (req, res) => {
+        app.get("/api/jsuperman/results", (req, res) => {
           const { page, size } = req.query;
           res.send(
             this.jrs.getResults({ page: page as string, size: size as string })
